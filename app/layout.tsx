@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, DM_Sans } from "next/font/google";
 import { ThemeProvider } from "@/components/provider/theme-provider";
 import "./globals.css";
+import QueryProvider from "@/components/provider/query-provider";
 import { cn } from "@/lib/utils";
 
 const dmSans = DM_Sans({subsets:['latin'],variable:'--font-sans'});
@@ -33,6 +34,7 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col">
+         <QueryProvider>
         <ThemeProvider  //
           attribute="class"
           defaultTheme="dark"
@@ -41,6 +43,7 @@ export default function RootLayout({
         >
           {children}
         </ThemeProvider>
+        </QueryProvider>
       </body>
     </html> 
   );
